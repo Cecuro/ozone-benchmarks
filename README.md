@@ -86,8 +86,9 @@ Disagreement is close to symmetric, which is what an independent judge should lo
 ours is not uniformly harsher or looser, it simply draws the line in a different place on
 the ~11% of rows where the call is genuinely arguable.
 
-That asymmetry creates a fairness problem in the other direction: scoring Ozone with a
-strict judge while quoting competitors' numbers from a lenient one would flatter us.
+Two judges that disagree on a ninth of the rows cannot both be used in one table. Scoring
+Ozone with ours while quoting competitors' figures from theirs would make the comparison
+meaningless, and the error would fall in whichever direction happened to suit us.
 So `scripts/rejudge-baselines.mjs` re-judges **all 1,490 published competitor rows with
 our judge**, and the headline comparison is scored that way — one standard for every tool,
 for about four dollars. The as-published figures remain available for continuity, and both
@@ -126,9 +127,9 @@ CVE-2019-10776  CVE-2019-5483     CVE-2020-11021  CVE-2020-7763
 
 For these, the `fixed` pull request is identical to the `unfixed` one, so a tool that
 correctly finds the vulnerability is recorded as raising a false positive. This penalises
-exactly the tools that detect the most, and the effect is not small: excluding those eight
-`fixed` rows moves Cursor Bugbot's precision from 74.2% to 78.3% and GitLab Duo's from
-92.9% to 97.5%.
+exactly the tools that detect the most. The effect is real but modest: excluding those
+eight `fixed` rows moves Cursor Bugbot's precision from 61.1% to 63.5%, Claude Code's from
+77.8% to 81.4%, and GitLab Duo's from 66.7% to 71.4%.
 
 `scripts/score.mjs` therefore prints two tables — **as published**, comparable with the
 numbers already in circulation, and **corrected**, excluding those eight rows for every
@@ -152,11 +153,15 @@ node scripts/build-fixtures.mjs --org Cecuro --visibility private
 # 2. Run Ozone over them (spend-capped, resumable, nothing auto-triggers)
 OZONE_API_KEY=oz_live_… node scripts/run-ozone.mjs --max-spend 150 --concurrency 4
 
-# 3. Judge the findings, blind to the tool
-ANTHROPIC_API_KEY=… node scripts/judge.mjs
+# 3. Judge the findings, blind to the tool and to which version it is looking at
+export AZURE_OPENAI_API_KEY=… AZURE_OPENAI_ENDPOINT=…
+node scripts/judge.mjs
 
-# 4. Score, against every published baseline
-node scripts/score.mjs
+# 4. Optional but recommended: re-judge every competitor row with the same judge (~$5)
+node scripts/rejudge-baselines.mjs
+
+# 5. Score
+node scripts/score.mjs --baselines results/baselines-rejudged
 ```
 
 Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recorded.
@@ -172,6 +177,8 @@ Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recor
 | `prompts/judge.md` | the judge prompt, verbatim |
 | `results/runs.jsonl` | every run: status, cost, duration, and each finding as Ozone reported it |
 | `results/judged.jsonl` | one verdict per run, with reasoning and the judge model |
+| `results/baselines-rejudged/` | every competitor row re-judged by our judge |
+| `results/judge-validation.json` | our judge vs DeepSource's, over all 1,489 rows |
 | `results/scores.json` | the computed tables |
 
 ## Scope and limits
