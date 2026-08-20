@@ -32,8 +32,13 @@ export function renderIssues(issues) {
   }).join('\n\n')
 }
 
-export const buildUser = ({ cve, description, variant, issues }) =>
-  `CVE: ${cve}\nCVE description: ${description}\n\nVariant: ${variant}\n\n` +
+// The variant is deliberately NOT in the prompt. Telling the judge that a version is
+// already patched tells it the answer: it then declines every finding on the fixed
+// variant, no tool can record a false positive, and precision is 100% for everyone by
+// construction. The judge decides only whether the reported issues describe the CVE;
+// the variant maps that verdict onto the confusion matrix afterwards.
+export const buildUser = ({ cve, description, issues }) =>
+  `CVE: ${cve}\nCVE description: ${description}\n\n` +
   `Reported issues (${issues?.length ?? 0}):\n\n${renderIssues(issues)}`
 
 export async function judgeOnce({ cve, description, variant, issues, model = DEFAULT_MODEL, effort = DEFAULT_EFFORT, system }) {

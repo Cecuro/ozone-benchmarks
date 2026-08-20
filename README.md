@@ -57,6 +57,13 @@ different model family from the reviewer being scored, so no vendor marks its ow
 homework. Effort is pinned rather than left to default, because a judge that varies its
 own depth between calls is not one verdict standard.
 
+The judge is **not told which version it is looking at**. An earlier revision of the
+prompt named the variant, and the effect was severe: told that a version was already
+patched, the judge declined every finding on it, no tool could record a false positive,
+and precision came out at exactly 100% for all nine tools. Ground truth in the prompt is
+ground truth in the answer. The judge now sees only the CVE and the reported issues, and
+the variant maps its verdict onto the confusion matrix afterwards.
+
 ### Validating the judge
 
 The judge is the one component of this benchmark we wrote ourselves, so it is checked
@@ -64,27 +71,47 @@ against a judge we did not write. DeepSource judged the same 165 rows for nine t
 Claude Opus 4.5 and published every verdict, so ours can be replayed over those rows and
 compared.
 
-On an 80-row sample stratified by their verdict (`results/judge-validation.json`):
+Replayed over **all 1,489 published verdicts** (`results/judge-validation.json`):
 
 | | |
 | --- | --- |
-| agreement | 87.5% |
-| Cohen's κ | 0.750 |
-| both said match | 30 |
-| both said no match | 40 |
-| **theirs matched, ours did not** | **10** |
-| **ours matched, theirs did not** | **0** |
+| agreement | 88.6% |
+| Cohen's κ | 0.736 |
+| both said match | 387 |
+| both said no match | 932 |
+| theirs matched, ours did not | 82 |
+| ours matched, theirs did not | 88 |
 
-The disagreement is entirely one-directional: our judge never credited a detection that
-theirs rejected. It is strictly the harsher of the two, and it is harsh in the way that
-costs us — a detection has to identify the CVE's actual impact and mechanism, not merely
-land on the right line.
+Disagreement is close to symmetric, which is what an independent judge should look like:
+ours is not uniformly harsher or looser, it simply draws the line in a different place on
+the ~11% of rows where the call is genuinely arguable.
 
 That asymmetry creates a fairness problem in the other direction: scoring Ozone with a
 strict judge while quoting competitors' numbers from a lenient one would flatter us.
 So `scripts/rejudge-baselines.mjs` re-judges **all 1,490 published competitor rows with
-our judge**, and the headline comparison is scored that way — one standard for every tool.
-The as-published figures remain available for continuity, and both are reported.
+our judge**, and the headline comparison is scored that way — one standard for every tool,
+for about four dollars. The as-published figures remain available for continuity, and both
+are reported.
+
+Scored under that single judge, the nine published tools land as follows. These are not
+DeepSource's numbers and should not be quoted as such: they are what its published raw
+output scores when every tool is judged the same way.
+
+| tool | precision | recall | F1 | accuracy |
+| --- | --- | --- | --- | --- |
+| DeepSource | 88.89% | 58.54% | 70.59% | 75.76% |
+| Cursor Bugbot | 61.11% | 80.49% | 69.47% | 64.85% |
+| Devin | 79.66% | 57.32% | 66.67% | 71.52% |
+| Codex | 74.19% | 56.10% | 63.89% | 68.48% |
+| Claude Code | 77.78% | 42.68% | 55.12% | 65.45% |
+| Greptile | 61.40% | 42.68% | 50.36% | 58.18% |
+| GitLab Duo | 66.67% | 35.29% | 46.15% | 58.82% |
+| CodeRabbit | 59.26% | 19.51% | 29.36% | 53.33% |
+| Semgrep CE | 66.67% | 14.63% | 24.00% | 53.66% |
+
+The re-judged figures are lower across the board than the published ones, and the ordering
+moves. Nobody's 100% precision survives a judge that is not told which version it is
+looking at.
 
 ### A defect in the dataset, and how we report around it
 
