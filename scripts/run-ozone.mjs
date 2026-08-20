@@ -134,6 +134,37 @@ if (args.only) {
   const want = new Set(String(args.only).split(',').map((s) => s.trim()))
   tasks = tasks.filter((t) => want.has(t.cve))
 }
+
+// Sampling is by CVE, never by run, so a sampled sweep still holds both variants of
+// every CVE it covers and can report precision as well as recall. The order is a
+// seeded shuffle rather than the manifest's (alphabetical, therefore roughly
+// chronological) order, so a sweep cut short by the spend cap is still a random
+// subset of the benchmark rather than its oldest CVEs. The seed is recorded with the
+// results so the selection can be reproduced exactly.
+const SEED = Number(args.seed ?? 20260820)
+function shuffled(keys, seed) {
+  // mulberry32 — small, deterministic, and identical across machines.
+  let s = seed >>> 0
+  const rand = () => {
+    s = (s + 0x6D2B79F5) >>> 0
+    let t = Math.imul(s ^ (s >>> 15), 1 | s)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+  const out = [...keys]
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[out[i], out[j]] = [out[j], out[i]]
+  }
+  return out
+}
+const order = shuffled([...new Set(tasks.map((t) => t.cve))], SEED)
+const rank = new Map(order.map((c, i) => [c, i]))
+tasks.sort((a, b) => (rank.get(a.cve) - rank.get(b.cve)) || a.variant.localeCompare(b.variant))
+if (args.sample) {
+  const keep = new Set(order.slice(0, Number(args.sample)))
+  tasks = tasks.filter((t) => keep.has(t.cve))
+}
 if (args.limit) tasks = tasks.slice(0, Number(args.limit))
 
 const outDir = join(ROOT, 'results/raw')

@@ -9,8 +9,11 @@
 // CVE descriptions come from OSV, matching the published run, and are cached so a
 // re-judge does not depend on the network.
 //
-// Usage: ANTHROPIC_API_KEY=… node scripts/judge.mjs [--model claude-opus-4-5-20251101]
-//                                                   [--only CVE-ID,...] [--force]
+// The judge runs on Azure OpenAI, a different model family from the reviewer being
+// scored, so no vendor is marking its own homework.
+//
+// Usage: AZURE_OPENAI_API_KEY=… AZURE_OPENAI_ENDPOINT=… node scripts/judge.mjs
+//          [--model gpt-5.5] [--only CVE-ID,...] [--force]
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
@@ -18,9 +21,13 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = parseArgs(process.argv.slice(2))
-const MODEL = args.model ?? 'claude-opus-4-5-20251101'
-const KEY = process.env.ANTHROPIC_API_KEY
-if (!KEY) { console.error('ANTHROPIC_API_KEY is not set'); process.exit(2) }
+const MODEL = args.model ?? 'gpt-5.5'
+const API_VERSION = args['api-version'] ?? process.env.AZURE_OPENAI_API_VERSION ?? '2025-03-01-preview'
+const KEY = process.env.AZURE_OPENAI_API_KEY
+// The project-scoped Foundry endpoint carries an /api/projects/... suffix that the
+// deployments path does not sit under; strip it so either form works.
+const ENDPOINT = (process.env.AZURE_OPENAI_ENDPOINT ?? '').replace(/\/api\/projects\/[^/]+\/?$/, '').replace(/\/$/, '')
+if (!KEY || !ENDPOINT) { console.error('AZURE_OPENAI_API_KEY / AZURE_OPENAI_ENDPOINT are not set'); process.exit(2) }
 
 function parseArgs(argv) {
   const out = {}
@@ -71,24 +78,24 @@ async function judge(record, description) {
     `Variant: ${record.variant}\n\nReported issues (${record.findings.length}):\n\n` +
     (issues || '(the reviewer reported no issues)')
 
+  const url = `${ENDPOINT}/openai/deployments/${MODEL}/chat/completions?api-version=${API_VERSION}`
   for (let attempt = 0; attempt < 4; attempt++) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(url, {
       method: 'POST',
-      headers: { 'x-api-key': KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+      headers: { 'api-key': KEY, 'content-type': 'application/json' },
       body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 1000,
-        system: SYSTEM,
-        messages: [{ role: 'user', content: user }],
+        max_completion_tokens: 4000,
+        response_format: { type: 'json_object' },
+        messages: [{ role: 'system', content: SYSTEM }, { role: 'user', content: user }],
       }),
     })
     if (res.status === 429 || res.status >= 500) {
-      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)))
+      await new Promise((r) => setTimeout(r, 3000 * (attempt + 1)))
       continue
     }
     if (!res.ok) throw new Error(`judge ${res.status}: ${(await res.text()).slice(0, 200)}`)
     const body = await res.json()
-    const text = (body.content ?? []).filter((b) => b.type === 'text').map((b) => b.text).join('')
+    const text = body.choices?.[0]?.message?.content ?? ''
     const m = text.match(/\{[\s\S]*\}/)
     if (!m) throw new Error(`judge returned no JSON: ${text.slice(0, 200)}`)
     return JSON.parse(m[0])
