@@ -1,0 +1,49 @@
+{
+ "CVE-2017-16026": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16026",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "lib/multipart.js"
+  ],
+  "cwes": [
+   "CWE-770"
+  ],
+  "source": "request/request"
+ },
+ "CVE-2017-16029": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16029",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "lib/routes/statics.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "source": "henrytseng/hostr"
+ },
+ "CVE-2017-16034": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16034",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "lib/stats.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "source": "soyuka/pidusage"
+ }
+}

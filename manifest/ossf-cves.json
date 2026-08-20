@@ -1,0 +1,1546 @@
+[
+ {
+  "cve": "CVE-2017-16003",
+  "repo": "https://github.com/felixrieseberg/windows-build-tools.git",
+  "pre": "3a97ea156d07aaccca101ed8f0a1606eea8dfc2d",
+  "post": "9835d33e68f2cb5e4d148e954bb3ed0221d98e90",
+  "files": [
+   "src/download.js"
+  ],
+  "cwes": [
+   "CWE-829"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16003"
+ },
+ {
+  "cve": "CVE-2017-16014",
+  "repo": "https://github.com/http-party/node-http-proxy.git",
+  "pre": "0c71119ee58ee84068120be72308ecb28cb3e532",
+  "post": "0e36912906640fdb007e0492b75c3f6a7b580ec6",
+  "files": [
+   "lib/node-http-proxy.js"
+  ],
+  "cwes": [
+   "CWE-730"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16014"
+ },
+ {
+  "cve": "CVE-2017-16023",
+  "repo": "https://github.com/sindresorhus/decamelize.git",
+  "pre": "18479821851414d91ad3d42d8560adff5969da4b",
+  "post": "76d47d8de360afb574da2e34db87430ce11094e0",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16023"
+ },
+ {
+  "cve": "CVE-2017-16026",
+  "repo": "https://github.com/request/request.git",
+  "pre": "85f8235c061f8d0d1697066290a34f43120cb77f",
+  "post": "3d31d4526fa4d4e4f59b89cabe194fb671063cdb",
+  "files": [
+   "lib/multipart.js"
+  ],
+  "cwes": [
+   "CWE-770"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16026"
+ },
+ {
+  "cve": "CVE-2017-16028",
+  "repo": "https://github.com/jonschlinkert/randomatic.git",
+  "pre": "833f31a5aac0b8c2ddd3ae23ab41a0145c2974d0",
+  "post": "4a526959b3a246ae8e4a82f9c182180907227fe1",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-338"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16028"
+ },
+ {
+  "cve": "CVE-2017-16029",
+  "repo": "https://github.com/henrytseng/hostr.git",
+  "pre": "5827ba48fd4a08c26604b97798c57d45fe1cd51e",
+  "post": "789a00047459fd80b6f0a9701a1378a47fb73ba8",
+  "files": [
+   "lib/routes/statics.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16029"
+ },
+ {
+  "cve": "CVE-2017-16034",
+  "repo": "https://github.com/soyuka/pidusage.git",
+  "pre": "e3660d8a8e5e61afad9b02af67356a1e239d6bde",
+  "post": "b70eca15f7ca7f1b82a15f8a5d4bb48737f5a89d",
+  "files": [
+   "lib/stats.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16034"
+ },
+ {
+  "cve": "CVE-2017-16042",
+  "repo": "https://github.com/tj/node-growl.git",
+  "pre": "dc8aae046df328edd32dd69f3cd2d6b114d7018e",
+  "post": "d71177d5331c9de4658aca62e0ac921f178b0669",
+  "files": [
+   "lib/growl.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16042"
+ },
+ {
+  "cve": "CVE-2017-16043",
+  "repo": "https://github.com/erming/shout.git",
+  "pre": "890c751bb624cde53dc392b2c851cdcd056033c6",
+  "post": "ef041d6612e20369bf49b17b8162c57b4955a1cc",
+  "files": [
+   "client/js/shout.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16043"
+ },
+ {
+  "cve": "CVE-2017-16087",
+  "repo": "https://github.com/vvakame/fs-git.git",
+  "pre": "50b33e3faec0b08183a699efb9b154c0d1495bee",
+  "post": "eb5f70efa5cfbff1ab299fa7daaa5de549243998",
+  "files": [
+   "lib/index.ts"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16087"
+ },
+ {
+  "cve": "CVE-2017-16100",
+  "repo": "https://github.com/skoranga/node-dns-sync.git",
+  "pre": "b748fe77a87749d95876028eda8e759109be4c73",
+  "post": "d9abaae384b198db1095735ad9c1c73d7b890a0d",
+  "files": [
+   "lib/dns-sync.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16100"
+ },
+ {
+  "cve": "CVE-2017-16107",
+  "repo": "https://github.com/Eeems/PooledWebSocket.git",
+  "pre": "d51217a285c1dc5851743d0756cc43c35d12737c",
+  "post": "7b3b4e5c6be6d8a964296fa3c50e38dc07e9701d",
+  "files": [
+   "server.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16107"
+ },
+ {
+  "cve": "CVE-2017-16117",
+  "repo": "https://github.com/Trott/node-slug.git",
+  "pre": "85ded30a95760b19cd223abe668eade0279a21f2",
+  "post": "791b7d8ea1804be341561aa5d44d282bbfd2f780",
+  "files": [
+   "slug.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16117"
+ },
+ {
+  "cve": "CVE-2017-16136",
+  "repo": "https://github.com/expressjs/method-override.git",
+  "pre": "5a7d6a1f2f16ba4ec2bbab3d67b98b30e1d8a0fe",
+  "post": "4c58835a61fdf7a8e070d6f8ecd5379a961d0987",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16136"
+ },
+ {
+  "cve": "CVE-2017-16137",
+  "repo": "https://github.com/visionmedia/debug.git",
+  "pre": "47747f329fe159e94262318b52b87a48f6c0acd4",
+  "post": "c38a0166c266a679c8de012d4eaccec3f944e685",
+  "files": [
+   "src/node.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16137"
+ },
+ {
+  "cve": "CVE-2017-16224",
+  "repo": "https://github.com/isaacs/st.git",
+  "pre": "ae7b6768c1d91dd48b368b2b921193fc2b36cff1",
+  "post": "579960c629f12a27428e2da84c54f517e37b0a16",
+  "files": [
+   "st.js"
+  ],
+  "cwes": [
+   "CWE-601"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-16224"
+ },
+ {
+  "cve": "CVE-2017-18077",
+  "repo": "https://github.com/juliangruber/brace-expansion.git",
+  "pre": "265f6cd6586383eebebbfc3c45da2eaa153d9e63",
+  "post": "ed46e5ba619bd938e5b84835fca00eed0adc5585",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-18077"
+ },
+ {
+  "cve": "CVE-2017-18353",
+  "repo": "https://github.com/GoogleChrome/rendertron.git",
+  "pre": "16ade3208c80c3de8f8e36a05ad8242af1eeb7f4",
+  "post": "324ac99732c943d7b16aead2fceaa8b31a458eaa",
+  "files": [
+   "src/main.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-18353"
+ },
+ {
+  "cve": "CVE-2017-18354",
+  "repo": "https://github.com/GoogleChrome/rendertron.git",
+  "pre": "16ade3208c80c3de8f8e36a05ad8242af1eeb7f4",
+  "post": "324ac99732c943d7b16aead2fceaa8b31a458eaa",
+  "files": [
+   "src/renderer.js"
+  ],
+  "cwes": [
+   "CWE-918"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-18354"
+ },
+ {
+  "cve": "CVE-2017-18355",
+  "repo": "https://github.com/GoogleChrome/rendertron.git",
+  "pre": "16ade3208c80c3de8f8e36a05ad8242af1eeb7f4",
+  "post": "324ac99732c943d7b16aead2fceaa8b31a458eaa",
+  "files": [
+   "src/renderer.js"
+  ],
+  "cwes": [
+   "CWE-200"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2017-18355"
+ },
+ {
+  "cve": "CVE-2018-1000096",
+  "repo": "https://github.com/brianleroux/tiny-json-http.git",
+  "pre": "41468a2ba952aa4d59c2fae20a7a7394d3b6d5d7",
+  "post": "1460a815c9a657daaf29ebdf085b935221fcf676",
+  "files": [
+   "_read.js"
+  ],
+  "cwes": [],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-1000096"
+ },
+ {
+  "cve": "CVE-2018-1002203",
+  "repo": "https://github.com/ZJONSSON/node-unzipper.git",
+  "pre": "48bd69eaa3cbd30558bd218327ac103d1457e919",
+  "post": "2220ddd5b58f6252069a4f99f9475441ad0b50cd",
+  "files": [
+   "lib/extract.js"
+  ],
+  "cwes": [
+   "CWE-022"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-1002203"
+ },
+ {
+  "cve": "CVE-2018-1002204",
+  "repo": "https://github.com/cthackers/adm-zip.git",
+  "pre": "e116bc18df51e4e50c493cede82ae7696954b511",
+  "post": "62f64004fefb894c523a7143e8a88ebe6c84df25",
+  "files": [
+   "util/utils.js"
+  ],
+  "cwes": [
+   "CWE-022"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-1002204"
+ },
+ {
+  "cve": "CVE-2018-13797",
+  "repo": "https://github.com/scravy/node-macaddress.git",
+  "pre": "dd079620d11c91957ac897e88d539dfceec41d56",
+  "post": "358fd594adb196a86b94ac9c691f69fe5dad2332",
+  "files": [
+   "lib/linux.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-13797"
+ },
+ {
+  "cve": "CVE-2018-14042",
+  "repo": "https://github.com/twbs/bootstrap.git",
+  "pre": "13bf8aeae3db71e28af69782328c22215795c169",
+  "post": "2a5ba23ce8f041f3548317acc992ed8a736b609d",
+  "files": [
+   "js/tooltip.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed"
+  ],
+  "slug": "ozbench-cve-2018-14042"
+ },
+ {
+  "cve": "CVE-2018-16462",
+  "repo": "https://github.com/vincentmorneau/apex-publish-static-files.git",
+  "pre": "8d28fe8a9a49e5ff3f61e239293b5646528e2915",
+  "post": "2209af8f2b65c24aa55ab757e0e05b958c16f063",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-16462"
+ },
+ {
+  "cve": "CVE-2018-16472",
+  "repo": "https://github.com/ashaffer/cached-path-relative.git",
+  "pre": "a63061a1c92cab1a9fd0e938fceeac26fedf30c4",
+  "post": "a43cffec84ed0e9eceecb43b534b6937a8028fc0",
+  "files": [
+   "lib/index.js"
+  ],
+  "cwes": [
+   "CWE-250",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-16472"
+ },
+ {
+  "cve": "CVE-2018-16478",
+  "repo": "https://github.com/tikonen/blog.git",
+  "pre": "08ab167d21ca55e6bb5599fdd599e888c8cc667c",
+  "post": "d85f8cf0634aac25b058f47dd6d5a291fce7840c",
+  "files": [
+   "simplehttpserver/simplehttpserver.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-16478"
+ },
+ {
+  "cve": "CVE-2018-16490",
+  "repo": "https://github.com/aheckmann/mpath.git",
+  "pre": "77204d7e5b0adb2100e862069a3c20d073df8f06",
+  "post": "7e2977feb38cf3ce20c1e98b0850909e5f34e6c4",
+  "files": [
+   "lib/index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-16490"
+ },
+ {
+  "cve": "CVE-2018-16491",
+  "repo": "https://github.com/dreamerslab/node.extend.git",
+  "pre": "91713698d86df0bad356f13ae2e68af7f226bce9",
+  "post": "7e6135a5da16a755a28ffa596e14a07bf5e0c95b",
+  "files": [
+   "lib/extend.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-16491"
+ },
+ {
+  "cve": "CVE-2018-20834",
+  "repo": "https://github.com/npm/node-tar.git",
+  "pre": "58a8d437abccd6dc884541b8bf6554901ec592cc",
+  "post": "b0c58433c22f5e7fe8b1c76373f27e3f81dcd4c8",
+  "files": [
+   "lib/unpack.js"
+  ],
+  "cwes": [
+   "CWE-022"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-20834"
+ },
+ {
+  "cve": "CVE-2018-20835",
+  "repo": "https://github.com/mafintosh/tar-fs.git",
+  "pre": "7b4ab17e950832cfd3e67421e48898fdb50318fc",
+  "post": "06672828e6fa29ac8551b1b6f36c852a9a3c58a2",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-022"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-20835"
+ },
+ {
+  "cve": "CVE-2018-3713",
+  "repo": "https://github.com/simonh1000/angular-http-server.git",
+  "pre": "c1b677f493cc97cb63bbda1887d2a9d1b2bd4732",
+  "post": "34d4bd0cd0f00c46db30855a8c4aabae27eb0ac8",
+  "files": [
+   "angular-http-server.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "variants": [
+   "fixed"
+  ],
+  "slug": "ozbench-cve-2018-3713"
+ },
+ {
+  "cve": "CVE-2018-3726",
+  "repo": "https://github.com/omphalos/crud-file-server.git",
+  "pre": "0c45fc64f0c0aeb23fe515c95e29f6485803de65",
+  "post": "4155bfe068bf211b49a0b3ffd06e78cbaf1b40fa",
+  "files": [
+   "crud-file-server.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3726"
+ },
+ {
+  "cve": "CVE-2018-3736",
+  "repo": "https://github.com/TooTallNate/node-https-proxy-agent.git",
+  "pre": "c58d365dd153104d1147967a0a6b4e1dd1698e50",
+  "post": "1c24219df87524e6ed973127e81f30801d658f07",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-770"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3736"
+ },
+ {
+  "cve": "CVE-2018-3737",
+  "repo": "https://github.com/joyent/node-sshpk.git",
+  "pre": "4d01aede236ddfefa55ba9bef07308dca315603d",
+  "post": "46065d38a5e6d1bccf86d3efb2fb83c14e3f9957",
+  "files": [
+   "lib/formats/ssh.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3737"
+ },
+ {
+  "cve": "CVE-2018-3746",
+  "repo": "https://github.com/fagbokforlaget/pdfinfojs.git",
+  "pre": "379c0e14db8298b465269653b9ac308d83eb6d4e",
+  "post": "5cc59cd8aa13ca8d16bb41da8affdfef370ad4fd",
+  "files": [
+   "lib/pdfinfo.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3746"
+ },
+ {
+  "cve": "CVE-2018-3750",
+  "repo": "https://github.com/unclechu/node-deep-extend.git",
+  "pre": "9653940a75c2ef2b1a503b24cbadd707cccffa8c",
+  "post": "9423fae877e2ab6b4aecc4db79a0ed63039d4703",
+  "files": [
+   "lib/deep-extend.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3750"
+ },
+ {
+  "cve": "CVE-2018-3752",
+  "repo": "https://github.com/schnittstabil/merge-options.git",
+  "pre": "45a889b92251c342453af40c5f8e3fad063b7ef6",
+  "post": "d4a93bc2890455e0931ac0779667023e6cb101d4",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3752"
+ },
+ {
+  "cve": "CVE-2018-3757",
+  "repo": "https://github.com/roest01/node-pdf-image.git",
+  "pre": "5803471830e0227df33a4b645aefd6521ff441e0",
+  "post": "15c13846a966c8513e30aff58471163a872b3b6d",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3757"
+ },
+ {
+  "cve": "CVE-2018-3770",
+  "repo": "https://github.com/alanshaw/markdown-pdf.git",
+  "pre": "118c5c558b06d6bc950e92a01881417d996aecc6",
+  "post": "5a3d30d1b1ea26702be671e6cbce2dc093e8604f",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-94"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3770"
+ },
+ {
+  "cve": "CVE-2018-3783",
+  "repo": "https://github.com/JasonEtco/flintcms.git",
+  "pre": "49e4b6a49e8ba378313845162cd32ba06a2681d6",
+  "post": "4ae34238ce39fde00dfa15082397541758c07af1",
+  "files": [
+   "server/apps/routes/auth.js"
+  ],
+  "cwes": [
+   "CWE-089"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-3783"
+ },
+ {
+  "cve": "CVE-2018-6333",
+  "repo": "https://github.com/facebookarchive/nuclide.git",
+  "pre": "ee8e058c8b90cb008f3ee151c52aec40cad1174a",
+  "post": "65f6bbd683404be1bb569b8d1be84b5d4c74a324",
+  "files": [
+   "pkg/nuclide-hhvm/lib/main.js"
+  ],
+  "cwes": [
+   "CWE-601"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-6333"
+ },
+ {
+  "cve": "CVE-2018-7651",
+  "repo": "https://github.com/npm/ssri.git",
+  "pre": "427f4233b0b3dd8c338e69e5cb0a6641df263603",
+  "post": "d0ebcdc22cb5c8f47f89716d08b3518b2485d65d",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2018-7651"
+ },
+ {
+  "cve": "CVE-2019-10061",
+  "repo": "https://github.com/peterbraden/node-opencv.git",
+  "pre": "cfc96ba0af8c13d017d9c72f2c61ec968f1c15fb",
+  "post": "81a4b8620188e89f7e4fc985f3c89b58d4bcc86b",
+  "files": [
+   "utils/find-opencv.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10061"
+ },
+ {
+  "cve": "CVE-2019-10090",
+  "repo": "https://github.com/apache/jspwiki.git",
+  "pre": "447b5a634dfb6adcc7ff28181cb174aaa1920577",
+  "post": "139746f7c25b84049437d1d9eed9456446a08bf7",
+  "files": [
+   "jspwiki-war/src/main/scripts/moo-extend/Element.Extend.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10090"
+ },
+ {
+  "cve": "CVE-2019-1010091",
+  "repo": "https://github.com/tinymce/tinymce.git",
+  "pre": "8b29e00959cf37cbc9642178e686aea688a162ee",
+  "post": "aa516c52d4f2104c36af3d640b2adb22e379f9a4",
+  "files": [
+   "src/core/main/ts/api/html/SaxParser.ts"
+  ],
+  "cwes": [
+   "CWE-116",
+   "CWE-020"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-1010091"
+ },
+ {
+  "cve": "CVE-2019-10746",
+  "repo": "https://github.com/jonschlinkert/mixin-deep.git",
+  "pre": "9925af763440a50891358d00db0e6a5accc50ee6",
+  "post": "8f464c8ce9761a8c9c2b3457eaeee9d404fa7af9",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10746"
+ },
+ {
+  "cve": "CVE-2019-10747",
+  "repo": "https://github.com/jonschlinkert/set-value.git",
+  "pre": "7bd5011d82e583305a191a9a062abfe177ec29ad",
+  "post": "95e9d9923f8a8b4a01da1ea138fcc39ec7b6b15f",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10747"
+ },
+ {
+  "cve": "CVE-2019-10750",
+  "repo": "https://github.com/alexindigo/deeply.git",
+  "pre": "d9f59eec37b75ce52038b3fcfb0fd86d4989c0c1",
+  "post": "6eccb2f03ec8d3eefc6805053c4cc2a36aab1505",
+  "files": [
+   "lib/reduce_object.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10750"
+ },
+ {
+  "cve": "CVE-2019-10757",
+  "repo": "https://github.com/knex/knex.git",
+  "pre": "516b0747901c1d3efb4097bb89f2f7bce7e7ba36",
+  "post": "988fb243898d746a759d422762685a79eddf99ca",
+  "files": [
+   "lib/dialects/mssql/index.js"
+  ],
+  "cwes": [
+   "CWE-116"
+  ],
+  "variants": [
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10757"
+ },
+ {
+  "cve": "CVE-2019-10759",
+  "repo": "https://github.com/commenthol/safer-eval.git",
+  "pre": "1ff9411b4099e71798cfd822d5b0a536b39f31d5",
+  "post": "25fbbe53e46c54d10b4c583b8f5c659933400ccb",
+  "files": [
+   "src/browser.js"
+  ],
+  "cwes": [
+   "CWE-94"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10759"
+ },
+ {
+  "cve": "CVE-2019-10761",
+  "repo": "https://github.com/patriksimek/vm2.git",
+  "pre": "2ac8ff254a71e516e83f6496635fa61420447fa9",
+  "post": "4b22d704e4794af63a5a2d633385fd20948f6f90",
+  "files": [
+   "lib/contextify.js"
+  ],
+  "cwes": [
+   "CWE-74",
+   "CWE-94"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10761"
+ },
+ {
+  "cve": "CVE-2019-10776",
+  "repo": "https://github.com/kellyselden/git-diff-apply.git",
+  "pre": "bfcc903a961d9f17bde1889cf49745a2dffefd73",
+  "post": "106d61d3ae723b4257c2a13e67b95eb40a27e0b5",
+  "files": [
+   "src/run.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10776"
+ },
+ {
+  "cve": "CVE-2019-10777",
+  "repo": "https://github.com/awspilot/cli-lambda-deploy.git",
+  "pre": "3621b27347bdff96b5f444c0e31eba06e527005c",
+  "post": "0985a18bffb265817bc84836c9a65f2bb04a51ac",
+  "files": [
+   "lib/main.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10777"
+ },
+ {
+  "cve": "CVE-2019-10785",
+  "repo": "https://github.com/dojo/dojox.git",
+  "pre": "d6b93d9e76752363a402bef31473ce2d2ae356d7",
+  "post": "6eb278356ca7b0ac7e9cba6067fcf077d2e3ad9a",
+  "files": [
+   "xmpp/util.js"
+  ],
+  "cwes": [
+   "CWE-116",
+   "CWE-020"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-10785"
+ },
+ {
+  "cve": "CVE-2019-12043",
+  "repo": "https://github.com/jonschlinkert/remarkable.git",
+  "pre": "4ad13a078a8d9a7712b4992b4ba868db81b6f75a",
+  "post": "92d79a99c39a29665f7f4fabc9593f1b30924ca9",
+  "files": [
+   "lib/helpers/parse_link_destination.js"
+  ],
+  "cwes": [
+   "CWE-79"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-12043"
+ },
+ {
+  "cve": "CVE-2019-13506",
+  "repo": "https://github.com/Rich-Harris/devalue.git",
+  "pre": "751ed46deb404f5ed5d3ed49ee400903792530d5",
+  "post": "14cae90d1fcd5e0083e3a1741238e017684890d7",
+  "files": [
+   "src/index.ts"
+  ],
+  "cwes": [
+   "CWE-094",
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-13506"
+ },
+ {
+  "cve": "CVE-2019-15482",
+  "repo": "https://github.com/SLMNBJ/selectize-plugin-a11y.git",
+  "pre": "0824359781d57f1e629c866584e1c64e03ceae6f",
+  "post": "99c14f7644fdfc815625d7b54829e6c2dca31a8b",
+  "files": [
+   "selectize-plugin-a11y.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-15482"
+ },
+ {
+  "cve": "CVE-2019-15532",
+  "repo": "https://github.com/gchq/CyberChef.git",
+  "pre": "38ff7ec89f595dbe5971c3577fa29a142b4b2416",
+  "post": "01f0625d6a177f9c5df9281f12a27c814c2d8bcf",
+  "files": [
+   "src/core/operations/TextEncodingBruteForce.mjs"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-15532"
+ },
+ {
+  "cve": "CVE-2019-15657",
+  "repo": "https://github.com/mysticatea/eslint-utils.git",
+  "pre": "587cca2f82c245f5fc4a8b9fb2cf6b35c0d02552",
+  "post": "08158db1c98fd71cf0f32ddefbc147e2620e724c",
+  "files": [
+   "src/get-static-value.js"
+  ],
+  "cwes": [
+   "CWE-94"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-15657"
+ },
+ {
+  "cve": "CVE-2019-16769",
+  "repo": "https://github.com/yahoo/serialize-javascript.git",
+  "pre": "3bab6dee8db7317310a97af5d28f0f0479d21930",
+  "post": "16a68ab53d9626fc7c942b48a1163108fcd184c8",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-79"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-16769"
+ },
+ {
+  "cve": "CVE-2019-18350",
+  "repo": "https://github.com/ant-design/ant-design-pro.git",
+  "pre": "0ad1fb3109f9864fc728bd7c6ebcb99e248d9f25",
+  "post": "840034ca90a66ebe7835934cffcb85654e86f593",
+  "files": [
+   "src/models/login.ts"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116",
+   "CWE-601"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-18350"
+ },
+ {
+  "cve": "CVE-2019-19507",
+  "repo": "https://github.com/manvel-khnkoyan/jpv.git",
+  "pre": "e93d2f68126f837707427ff6019c448611fe1a1b",
+  "post": "fdab85599fd92aea87af35fb4c52ba26ccbdd427",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-807",
+   "CWE-290"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-19507"
+ },
+ {
+  "cve": "CVE-2019-20149",
+  "repo": "https://github.com/jonschlinkert/kind-of.git",
+  "pre": "4da96c0047906d22a4d6964a668d3abaca122e50",
+  "post": "1df992ce6d5a1292048e5fe9c52c5382f941ee0b",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-668",
+   "CWE-20"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-20149"
+ },
+ {
+  "cve": "CVE-2019-20174",
+  "repo": "https://github.com/auth0/lock.git",
+  "pre": "ecd249397d611fcfc381e6e00e51c8ecdb37d1ad",
+  "post": "6c15e5659c21cd814ea119af5c51b61399598dd5",
+  "files": [
+   "src/ui/input/checkbox_input.jsx"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-20174"
+ },
+ {
+  "cve": "CVE-2019-5483",
+  "repo": "https://github.com/senecajs/seneca.git",
+  "pre": "f505dc6dd375c1837e12ffa359f118a082d114f4",
+  "post": "b0565ba52048b83783186876cec23dd3f851e9ff",
+  "files": [
+   "lib/print.js"
+  ],
+  "cwes": [
+   "CWE-312",
+   "CWE-315",
+   "CWE-359"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-5483"
+ },
+ {
+  "cve": "CVE-2019-5484",
+  "repo": "https://github.com/bower/bower.git",
+  "pre": "4f68fc7daa4d6f0a3dfd0da2afdbb8f0b87558af",
+  "post": "45c6bfa86f6e57731b153baca9e0b41a1cc699e3",
+  "files": [
+   "lib/util/extract.js"
+  ],
+  "cwes": [
+   "CWE-022"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2019-5484"
+ },
+ {
+  "cve": "CVE-2019-8331",
+  "repo": "https://github.com/twbs/bootstrap.git",
+  "pre": "bf2515ae68f1d89e8b795478aec90f8db61159e5",
+  "post": "7bc4d2e0bc65151b6f60dccad50c9c8f50252bd6",
+  "files": [
+   "js/src/tooltip.js"
+  ],
+  "cwes": [
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed"
+  ],
+  "slug": "ozbench-cve-2019-8331"
+ },
+ {
+  "cve": "CVE-2020-11021",
+  "repo": "https://github.com/actions/http-client.git",
+  "pre": "cde0b32926ae7938c148121d11271f4cb1f5a57f",
+  "post": "f6aae3dda4f4c9dc0b49737b36007330f78fd53a",
+  "files": [
+   "index.ts"
+  ],
+  "cwes": [
+   "CWE-200"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-11021"
+ },
+ {
+  "cve": "CVE-2020-15156",
+  "repo": "https://github.com/psychobunny/nodebb-plugin-blog-comments.git",
+  "pre": "ed0156594a44c6429743e314e9b5a313fad60730",
+  "post": "cf43beedb05131937ef46f365ab0a0c6fa6ac618",
+  "files": [
+   "library.js"
+  ],
+  "cwes": [
+   "CWE-352"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-15156"
+ },
+ {
+  "cve": "CVE-2020-26226",
+  "repo": "https://github.com/semantic-release/semantic-release.git",
+  "pre": "63fa143023aa3b54e9a9231c7625549ef4d7f17a",
+  "post": "ca90b34c4a9333438cc4d69faeb43362bb991e5a",
+  "files": [
+   "lib/hide-sensitive.js"
+  ],
+  "cwes": [
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-26226"
+ },
+ {
+  "cve": "CVE-2020-26256",
+  "repo": "https://github.com/C2FO/fast-csv.git",
+  "pre": "1d18b894236687a5865ea70647010c1697a61d6d",
+  "post": "4bbd39f26a8cd7382151ab4f5fb102234b2f829e",
+  "files": [
+   "packages/parse/src/parser/Parser.ts"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-26256"
+ },
+ {
+  "cve": "CVE-2020-4066",
+  "repo": "https://github.com/erelsgl/limdu.git",
+  "pre": "92c045d30de99fd490627d0c4b441d532b0e4a83",
+  "post": "03475a6a6bb253de6fad8f7f39cfb3504f11438d",
+  "files": [
+   "classifiers/svm/SvmLinear.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-4066"
+ },
+ {
+  "cve": "CVE-2020-5258",
+  "repo": "https://github.com/dojo/dojo.git",
+  "pre": "35d1141221f9885682c067abae296393e611e968",
+  "post": "20a00afb68f5587946dc76fbeaa68c39bda2171d",
+  "files": [
+   "request/util.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-5258"
+ },
+ {
+  "cve": "CVE-2020-6836",
+  "repo": "https://github.com/handsontable/formula-parser.git",
+  "pre": "944136096f44ff4ffd4ba0bcef30970ca4702fce",
+  "post": "396b089738d4bf30eb570a4fe6a188affa95cd5e",
+  "files": [
+   "src/grammar-parser/grammar-parser.js"
+  ],
+  "cwes": [
+   "CWE-094",
+   "CWE-079",
+   "CWE-116"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-6836"
+ },
+ {
+  "cve": "CVE-2020-7656",
+  "repo": "https://github.com/jquery/jquery.git",
+  "pre": "c27dc018e22260b6ad084dff4505172e6b107178",
+  "post": "a938d7b1282fc0e5c52502c225ae8f0cef219f0a",
+  "files": [
+   "src/ajax.js"
+  ],
+  "cwes": [
+   "CWE-116",
+   "CWE-020"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-7656"
+ },
+ {
+  "cve": "CVE-2020-7660",
+  "repo": "https://github.com/yahoo/serialize-javascript.git",
+  "pre": "1ac487ed828762eb490ad87022b6b354e0772284",
+  "post": "f21a6fb3ace2353413761e79717b2d210ba6ccbd",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-502"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-7660"
+ },
+ {
+  "cve": "CVE-2020-7662",
+  "repo": "https://github.com/faye/websocket-extensions-node.git",
+  "pre": "4a76c75efb1c5d6a2f60550e9501757458d19533",
+  "post": "29496f6838bfadfe5a2f85dff33ed0ba33873237",
+  "files": [
+   "lib/parser.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-7662"
+ },
+ {
+  "cve": "CVE-2020-7699",
+  "repo": "https://github.com/richardgirges/express-fileupload.git",
+  "pre": "e9848fc1b5c92e175adb18afa0850f6e7dfc0b5c",
+  "post": "d81bee9bc07f98246b7c580e2c25c1db656af7b5",
+  "files": [
+   "lib/processNested.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-7699"
+ },
+ {
+  "cve": "CVE-2020-7763",
+  "repo": "https://github.com/pofider/phantom-html-to-pdf.git",
+  "pre": "c1c4d4df05f3d019e74ed209bae345d2c38d8962",
+  "post": "b5d2da2639a49a95e0bdb3bc0c987cb6406b8259",
+  "files": [
+   "lib/conversion.js"
+  ],
+  "cwes": [
+   "CWE-022",
+   "CWE-023",
+   "CWE-036",
+   "CWE-073",
+   "CWE-099"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-7763"
+ },
+ {
+  "cve": "CVE-2020-8116",
+  "repo": "https://github.com/sindresorhus/dot-prop.git",
+  "pre": "e0f8abf71164321caf1b20109000b08be506f227",
+  "post": "3039c8c07f6fdaa8b595ec869ae0895686a7a0f2",
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-8116"
+ },
+ {
+  "cve": "CVE-2020-8192",
+  "repo": "https://github.com/fastify/fastify.git",
+  "pre": "854e150c0d78e7c31f4f6eca57908f9da19c379f",
+  "post": "74c3157ca90c3ffed9e4434f63c2017471ec970e",
+  "files": [
+   "lib/validation.js"
+  ],
+  "cwes": [
+   "CWE-770"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-8192"
+ },
+ {
+  "cve": "CVE-2020-8244",
+  "repo": "https://github.com/rvagg/bl.git",
+  "pre": "ecc0cc51ef62f41ae151e82d61a8eac71c2ca672",
+  "post": "8a8c13c880e2bef519133ea43e0e9b78b5d0c91e",
+  "files": [
+   "bl.js"
+  ],
+  "cwes": [
+   "CWE-125",
+   "CWE-126"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2020-8244"
+ },
+ {
+  "cve": "CVE-2021-31712",
+  "repo": "https://github.com/jpuri/react-draft-wysiwyg.git",
+  "pre": "f59ee8419cdbd45aab3bdfdf1995f112b09bbb6a",
+  "post": "f71fb3ca96f4596135ee739d29dfed7cc7b25b4b",
+  "files": [
+   "src/decorators/Link/index.js"
+  ],
+  "cwes": [
+   "CWE-79"
+  ],
+  "variants": [
+   "fixed",
+   "unfixed"
+  ],
+  "slug": "ozbench-cve-2021-31712"
+ }
+]
