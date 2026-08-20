@@ -52,6 +52,40 @@ the same file. The prompt is [`prompts/judge.md`](prompts/judge.md) and every ve
 written to `results/judged.jsonl` with its reasoning, so any judgment can be disputed
 against the record.
 
+The judge runs on **Azure OpenAI `gpt-5.6-terra` at `reasoning_effort: high`** — a
+different model family from the reviewer being scored, so no vendor marks its own
+homework. Effort is pinned rather than left to default, because a judge that varies its
+own depth between calls is not one verdict standard.
+
+### Validating the judge
+
+The judge is the one component of this benchmark we wrote ourselves, so it is checked
+against a judge we did not write. DeepSource judged the same 165 rows for nine tools with
+Claude Opus 4.5 and published every verdict, so ours can be replayed over those rows and
+compared.
+
+On an 80-row sample stratified by their verdict (`results/judge-validation.json`):
+
+| | |
+| --- | --- |
+| agreement | 87.5% |
+| Cohen's κ | 0.750 |
+| both said match | 30 |
+| both said no match | 40 |
+| **theirs matched, ours did not** | **10** |
+| **ours matched, theirs did not** | **0** |
+
+The disagreement is entirely one-directional: our judge never credited a detection that
+theirs rejected. It is strictly the harsher of the two, and it is harsh in the way that
+costs us — a detection has to identify the CVE's actual impact and mechanism, not merely
+land on the right line.
+
+That asymmetry creates a fairness problem in the other direction: scoring Ozone with a
+strict judge while quoting competitors' numbers from a lenient one would flatter us.
+So `scripts/rejudge-baselines.mjs` re-judges **all 1,490 published competitor rows with
+our judge**, and the headline comparison is scored that way — one standard for every tool.
+The as-published figures remain available for continuity, and both are reported.
+
 ### A defect in the dataset, and how we report around it
 
 In 8 of the 85 CVEs the file recorded as vulnerable is **byte-identical before and after

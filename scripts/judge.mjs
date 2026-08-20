@@ -18,16 +18,14 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { judgeOnce, systemPrompt, costOf, DEFAULT_MODEL, DEFAULT_EFFORT } from './lib/judge-core.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = parseArgs(process.argv.slice(2))
-const MODEL = args.model ?? 'gpt-5.5'
-const API_VERSION = args['api-version'] ?? process.env.AZURE_OPENAI_API_VERSION ?? '2025-03-01-preview'
+const MODEL = args.model ?? DEFAULT_MODEL
+const EFFORT = args.effort ?? DEFAULT_EFFORT
 const KEY = process.env.AZURE_OPENAI_API_KEY
-// The project-scoped Foundry endpoint carries an /api/projects/... suffix that the
-// deployments path does not sit under; strip it so either form works.
-const ENDPOINT = (process.env.AZURE_OPENAI_ENDPOINT ?? '').replace(/\/api\/projects\/[^/]+\/?$/, '').replace(/\/$/, '')
-if (!KEY || !ENDPOINT) { console.error('AZURE_OPENAI_API_KEY / AZURE_OPENAI_ENDPOINT are not set'); process.exit(2) }
+if (!KEY || !process.env.AZURE_OPENAI_ENDPOINT) { console.error('AZURE_OPENAI_API_KEY / AZURE_OPENAI_ENDPOINT are not set'); process.exit(2) }
 
 function parseArgs(argv) {
   const out = {}
@@ -68,40 +66,17 @@ async function describe(cve) {
   return text
 }
 
-const SYSTEM = await readFile(join(ROOT, 'prompts/judge.md'), 'utf8')
+const SYSTEM = await systemPrompt()
 
-async function judge(record, description) {
-  const issues = record.findings.map((f, i) =>
-    `[${i}] file: ${f.file ?? 'n/a'}${f.line ? `:${f.line}` : ''}\nseverity: ${f.severity ?? 'n/a'}\n` +
-    `title: ${f.title ?? ''}\nexplanation: ${(f.body ?? '').slice(0, 4000)}`).join('\n\n')
-  const user = `CVE: ${record.cve}\nCVE description: ${description}\n\n` +
-    `Variant: ${record.variant}\n\nReported issues (${record.findings.length}):\n\n` +
-    (issues || '(the reviewer reported no issues)')
-
-  const url = `${ENDPOINT}/openai/deployments/${MODEL}/chat/completions?api-version=${API_VERSION}`
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'api-key': KEY, 'content-type': 'application/json' },
-      body: JSON.stringify({
-        max_completion_tokens: 4000,
-        response_format: { type: 'json_object' },
-        messages: [{ role: 'system', content: SYSTEM }, { role: 'user', content: user }],
-      }),
-    })
-    if (res.status === 429 || res.status >= 500) {
-      await new Promise((r) => setTimeout(r, 3000 * (attempt + 1)))
-      continue
-    }
-    if (!res.ok) throw new Error(`judge ${res.status}: ${(await res.text()).slice(0, 200)}`)
-    const body = await res.json()
-    const text = body.choices?.[0]?.message?.content ?? ''
-    const m = text.match(/\{[\s\S]*\}/)
-    if (!m) throw new Error(`judge returned no JSON: ${text.slice(0, 200)}`)
-    return JSON.parse(m[0])
-  }
-  throw new Error('judge: retries exhausted')
-}
+const judge = (record, description) => judgeOnce({
+  cve: record.cve,
+  description,
+  variant: record.variant,
+  issues: record.findings,
+  model: MODEL,
+  effort: EFFORT,
+  system: SYSTEM,
+})
 
 const runsPath = join(ROOT, 'results/runs.jsonl')
 const raw = (await readFile(runsPath, 'utf8')).split('\n').filter(Boolean).map((l) => JSON.parse(l))
@@ -143,6 +118,8 @@ for (const record of records) {
       TN: record.variant === 'fixed' && !matched ? 1 : 0,
       judge_reasoning: verdict.reasoning,
       judge_model: MODEL,
+      judge_effort: EFFORT,
+      judge_cost_usd: costOf(MODEL, verdict.usage),
       cost_usd: record.cost_usd,
     }
     judged.set(key, row)
