@@ -69,13 +69,25 @@ async function api(path, init = {}) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-async function ensureProject() {
+// A project is created together with its first repository — there is no empty-project
+// endpoint — so the first fixture doubles as the seed repo.
+//
+// recommended_schedules is passed explicitly OFF. Omitting it opts the new project into
+// the finding_maintenance and knowledge_maintenance crons, both enabled, which would
+// then fire against the benchmark project on their own schedule and spend real money
+// outside this script's cap.
+async function ensureProject(seedRepoFullName) {
   const { projects = [] } = await api('/v1/projects')
   const found = projects.find((p) => p.name === PROJECT_NAME)
   if (found) return found.id
   const created = await api('/v1/projects', {
     method: 'POST',
-    body: JSON.stringify({ name: PROJECT_NAME }),
+    body: JSON.stringify({
+      name: PROJECT_NAME,
+      repo_full_name: seedRepoFullName,
+      installation_id: INSTALLATION_ID,
+      recommended_schedules: { finding_maintenance: false, knowledge_maintenance: false },
+    }),
   })
   return created.id ?? created.project?.id
 }
@@ -183,7 +195,7 @@ const pending = tasks.filter((t) => !done.has(`${t.cve}:${t.variant}`))
 console.log(`${tasks.length} tasks, ${done.size} already complete, ${pending.length} to run`)
 console.log(`spend cap $${MAX_SPEND}, concurrency ${CONCURRENCY}, base ${BASE}`)
 
-const projectId = await ensureProject()
+const projectId = await ensureProject(pending[0]?.repo_full_name ?? tasks[0]?.repo_full_name)
 const project = await api(`/v1/projects/${projectId}`)
 const attached = new Map((project.repos ?? []).map((r) => [r.repo_full_name, r]))
 console.log(`project ${projectId} (${(project.repos ?? []).length} repos attached)`)
