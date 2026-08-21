@@ -1,0 +1,594 @@
+[
+ {
+  "cve": "CVE-2017-16026",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16003",
+  "changed": 1,
+  "recorded": 1,
+  "missed": [
+   "src/constants.js"
+  ]
+ },
+ {
+  "cve": "CVE-2017-16028",
+  "changed": 4,
+  "recorded": 1,
+  "missed": [
+   "test.js"
+  ]
+ },
+ {
+  "cve": "CVE-2017-16023",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "test.js"
+  ]
+ },
+ {
+  "cve": "CVE-2017-16014",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16029",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16034",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16100",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16042",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16043",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16107",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16087",
+  "changed": 5,
+  "recorded": 1,
+  "missed": [
+   "npm-shrinkwrap.json",
+   "tsconfig.json"
+  ]
+ },
+ {
+  "cve": "CVE-2017-18077",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16136",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16224",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-18353",
+  "changed": 5,
+  "recorded": 1,
+  "missed": [
+   "src/renderer.js"
+  ]
+ },
+ {
+  "cve": "CVE-2017-16137",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-16117",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2017-18354",
+  "changed": 5,
+  "recorded": 1,
+  "missed": [
+   "src/main.js"
+  ]
+ },
+ {
+  "cve": "CVE-2017-18355",
+  "changed": 5,
+  "recorded": 1,
+  "missed": [
+   "src/main.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-1000096",
+  "changed": 2,
+  "recorded": 1,
+  "missed": [
+   "_write.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-1002203",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-1002204",
+  "changed": 1,
+  "recorded": 1,
+  "missed": [
+   "adm-zip.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-13797",
+  "changed": 6,
+  "recorded": 1,
+  "missed": [
+   "lib/macosx.js",
+   "lib/unix.js",
+   "lib/windows.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-14042",
+  "changed": 6,
+  "recorded": 1,
+  "missed": [
+   "js/affix.js",
+   "js/collapse.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-16462",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "test.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-16472",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-16478",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-16491",
+  "changed": 4,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3713",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "lib/get-file-path-from-url.js",
+   "lib/get-file-path-from-url.spec.js"
+  ]
+ },
+ {
+  "cve": "CVE-2018-16490",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-20835",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-20834",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3726",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3746",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3736",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3752",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3750",
+  "changed": 4,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3757",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3737",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3770",
+  "changed": 5,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-3783",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-7651",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2018-6333",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10061",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10750",
+  "changed": 7,
+  "recorded": 1,
+  "missed": [
+   "adapters/object.js",
+   "flags.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-10746",
+  "changed": 5,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-1010091",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10747",
+  "changed": 6,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10090",
+  "changed": 34,
+  "recorded": 1,
+  "missed": [
+   "jspwiki-war/src/main/scripts/behaviors/AddCSS.js",
+   "jspwiki-war/src/main/scripts/behaviors/Collapsible.js",
+   "jspwiki-war/src/main/scripts/moo-extend/HighlightQuery.js",
+   "jspwiki-war/src/main/scripts/util/extend-element.js",
+   "jspwiki-war/src/main/scripts/util/extend-string.js",
+   "jspwiki-war/src/main/scripts/util/hash.js",
+   "jspwiki-war/src/main/scripts/wiki-edit/Html2Wiki.js",
+   "jspwiki-war/src/main/scripts/wiki-edit/Wiki.Edit.js",
+   "jspwiki-war/src/main/scripts/wiki-edit/Wiki.Snips.js",
+   "jspwiki-war/src/main/scripts/wiki/Findpages.js",
+   "jspwiki-war/src/main/scripts/wiki/Recents.js",
+   "jspwiki-war/src/main/scripts/wiki/Wiki.Behaviors.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-10757",
+  "changed": 11,
+  "recorded": 1,
+  "missed": [
+   "lib/helpers.js",
+   "lib/query/compiler.js",
+   "lib/raw.js",
+   "lib/transaction.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-10776",
+  "changed": 1,
+  "recorded": 1,
+  "missed": [
+   "src/index.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-10777",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10759",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "src/common.js",
+   "webpack.config.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-10761",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-10785",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-12043",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-15532",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-15657",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-16769",
+  "changed": 4,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-18350",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-13506",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-15482",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-20149",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-20174",
+  "changed": 8,
+  "recorded": 1,
+  "missed": [
+   "src/connection/database/index.js",
+   "src/engine/classic/sign_up_pane.jsx",
+   "src/field/custom_input.jsx"
+  ]
+ },
+ {
+  "cve": "CVE-2019-5483",
+  "changed": 2,
+  "recorded": 1,
+  "missed": [
+   "lib/common.js",
+   "seneca.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-5484",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2019-8331",
+  "changed": 7,
+  "recorded": 1,
+  "missed": [
+   "js/src/tools/sanitizer.js"
+  ]
+ },
+ {
+  "cve": "CVE-2019-19507",
+  "changed": 13,
+  "recorded": 1,
+  "missed": [
+   ".eslintrc.json",
+   "expressions.js"
+  ]
+ },
+ {
+  "cve": "CVE-2020-11021",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-26226",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-15156",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-26256",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "packages/parse/src/parser/RowParser.ts"
+  ]
+ },
+ {
+  "cve": "CVE-2020-4066",
+  "changed": 1,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-5258",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-6836",
+  "changed": 6,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-7656",
+  "changed": 4,
+  "recorded": 1,
+  "missed": [
+   "src/ajax/jsonp.js",
+   "src/ajax/script.js",
+   "src/ajax/xhr.js"
+  ]
+ },
+ {
+  "cve": "CVE-2020-7660",
+  "changed": 4,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-7662",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-7763",
+  "changed": 2,
+  "recorded": 1,
+  "missed": [
+   "lib/scripts/conversionScriptPart.js"
+  ]
+ },
+ {
+  "cve": "CVE-2020-7699",
+  "changed": 4,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-8116",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "test.js"
+  ]
+ },
+ {
+  "cve": "CVE-2020-8244",
+  "changed": 2,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2020-8192",
+  "changed": 3,
+  "recorded": 1,
+  "missed": []
+ },
+ {
+  "cve": "CVE-2021-31712",
+  "changed": 3,
+  "recorded": 1,
+  "missed": [
+   "src/decorators/Link/__test__/linkDecoratorTest.js",
+   "src/utils/url.js"
+  ]
+ }
+]

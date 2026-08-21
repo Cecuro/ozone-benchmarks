@@ -53,7 +53,11 @@ async function api(path, init = {}, { retries = 0 } = {}) {
     } catch (e) {
       // Retry only where a repeat is harmless. Never on POST /v1/runs: a retried
       // start would launch a second billable run for the same pull request.
-      if (attempt >= retries || !(e.status >= 500)) throw e
+      // A dropped connection surfaces as a TypeError with no status, which is
+      // exactly the case worth retrying — the sweep lost six runs to it, each of
+      // which kept executing and billing on the server regardless.
+      const transient = e.status >= 500 || e.status === 429 || e.name === 'TypeError' || /fetch failed/i.test(e.message ?? '')
+      if (attempt >= retries || !transient) throw e
       await sleep(2000 * (attempt + 1))
     }
   }
@@ -135,7 +139,7 @@ async function ensureRepo(projectId, fullName, attached) {
 async function waitForRun(runId) {
   const deadline = Date.now() + RUN_TIMEOUT_MS
   for (;;) {
-    const run = await api(`/v1/runs/${runId}`, {}, { retries: 3 })
+    const run = await api(`/v1/runs/${runId}`, {}, { retries: 8 })
     if (['completed', 'failed', 'cancelled'].includes(run.status)) return run
     if (Date.now() > deadline) {
       await api(`/v1/runs/${runId}/cancel`, { method: 'POST' }).catch(() => {})
