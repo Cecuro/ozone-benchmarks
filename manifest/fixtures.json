@@ -45,5 +45,233 @@
    "CWE-088"
   ],
   "source": "soyuka/pidusage"
+ },
+ "CVE-2017-16023": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16023",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "source": "sindresorhus/decamelize"
+ },
+ "CVE-2017-16117": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16117",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "slug.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "source": "Trott/node-slug"
+ },
+ "CVE-2017-16136": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16136",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "source": "expressjs/method-override"
+ },
+ "CVE-2017-16137": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-16137",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "src/node.js"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "source": "visionmedia/debug"
+ },
+ "CVE-2017-18355": {
+  "repo_full_name": "Cecuro/ozbench-cve-2017-18355",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "src/renderer.js"
+  ],
+  "cwes": [
+   "CWE-200"
+  ],
+  "source": "GoogleChrome/rendertron"
+ },
+ "CVE-2018-16462": {
+  "repo_full_name": "Cecuro/ozbench-cve-2018-16462",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-088"
+  ],
+  "source": "vincentmorneau/apex-publish-static-files"
+ },
+ "CVE-2018-3752": {
+  "repo_full_name": "Cecuro/ozbench-cve-2018-3752",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "source": "schnittstabil/merge-options"
+ },
+ "CVE-2019-10746": {
+  "repo_full_name": "Cecuro/ozbench-cve-2019-10746",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "source": "jonschlinkert/mixin-deep"
+ },
+ "CVE-2019-10750": {
+  "repo_full_name": "Cecuro/ozbench-cve-2019-10750",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "lib/reduce_object.js"
+  ],
+  "cwes": [
+   "CWE-078",
+   "CWE-079",
+   "CWE-094",
+   "CWE-400",
+   "CWE-915"
+  ],
+  "source": "alexindigo/deeply"
+ },
+ "CVE-2019-10757": {
+  "repo_full_name": "Cecuro/ozbench-cve-2019-10757",
+  "prs": {
+   "unfixed": 1
+  },
+  "files": [
+   "lib/dialects/mssql/index.js"
+  ],
+  "cwes": [
+   "CWE-116"
+  ],
+  "source": "knex/knex"
+ },
+ "CVE-2019-10759": {
+  "repo_full_name": "Cecuro/ozbench-cve-2019-10759",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "src/browser.js"
+  ],
+  "cwes": [
+   "CWE-94"
+  ],
+  "source": "commenthol/safer-eval"
+ },
+ "CVE-2019-19507": {
+  "repo_full_name": "Cecuro/ozbench-cve-2019-19507",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "index.js"
+  ],
+  "cwes": [
+   "CWE-807",
+   "CWE-290"
+  ],
+  "source": "manvel-khnkoyan/jpv"
+ },
+ "CVE-2020-26226": {
+  "repo_full_name": "Cecuro/ozbench-cve-2020-26226",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "lib/hide-sensitive.js"
+  ],
+  "cwes": [
+   "CWE-116"
+  ],
+  "source": "semantic-release/semantic-release"
+ },
+ "CVE-2020-26256": {
+  "repo_full_name": "Cecuro/ozbench-cve-2020-26256",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "packages/parse/src/parser/Parser.ts"
+  ],
+  "cwes": [
+   "CWE-730",
+   "CWE-400"
+  ],
+  "source": "C2FO/fast-csv"
+ },
+ "CVE-2021-31712": {
+  "repo_full_name": "Cecuro/ozbench-cve-2021-31712",
+  "prs": {
+   "fixed": 1,
+   "unfixed": 2
+  },
+  "files": [
+   "src/decorators/Link/index.js"
+  ],
+  "cwes": [
+   "CWE-79"
+  ],
+  "source": "jpuri/react-draft-wysiwyg"
  }
 }

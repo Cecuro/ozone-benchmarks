@@ -46,7 +46,20 @@ function parseArgs(argv) {
   return out
 }
 
-async function api(path, init = {}) {
+async function api(path, init = {}, { retries = 0 } = {}) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await apiOnce(path, init)
+    } catch (e) {
+      // Retry only where a repeat is harmless. Never on POST /v1/runs: a retried
+      // start would launch a second billable run for the same pull request.
+      if (attempt >= retries || !(e.status >= 500)) throw e
+      await sleep(2000 * (attempt + 1))
+    }
+  }
+}
+
+async function apiOnce(path, init = {}) {
   const res = await fetch(`${BASE}${path}`, {
     ...init,
     headers: {
@@ -98,10 +111,11 @@ async function ensureProject(seedRepoFullName) {
 async function ensureRepo(projectId, fullName, attached) {
   let repo = attached.get(fullName)
   if (!repo) {
+    // Idempotent server-side: re-attaching an existing repo returns it as a reconnect.
     await api(`/v1/projects/${projectId}/repos`, {
       method: 'POST',
       body: JSON.stringify({ repo_full_name: fullName, installation_id: INSTALLATION_ID }),
-    })
+    }, { retries: 3 })
     const project = await api(`/v1/projects/${projectId}`)
     for (const r of project.repos ?? []) attached.set(r.repo_full_name, r)
     repo = attached.get(fullName)
@@ -121,7 +135,7 @@ async function ensureRepo(projectId, fullName, attached) {
 async function waitForRun(runId) {
   const deadline = Date.now() + RUN_TIMEOUT_MS
   for (;;) {
-    const run = await api(`/v1/runs/${runId}`)
+    const run = await api(`/v1/runs/${runId}`, {}, { retries: 3 })
     if (['completed', 'failed', 'cancelled'].includes(run.status)) return run
     if (Date.now() > deadline) {
       await api(`/v1/runs/${runId}/cancel`, { method: 'POST' }).catch(() => {})
@@ -170,7 +184,7 @@ function shuffled(keys, seed) {
   }
   return out
 }
-const order = shuffled([...new Set(tasks.map((t) => t.cve))], SEED)
+const order = shuffled(cves.map((c) => c.cve), SEED)
 const rank = new Map(order.map((c, i) => [c, i]))
 tasks.sort((a, b) => (rank.get(a.cve) - rank.get(b.cve)) || a.variant.localeCompare(b.variant))
 if (args.sample) {
@@ -200,6 +214,21 @@ const project = await api(`/v1/projects/${projectId}`)
 const attached = new Map((project.repos ?? []).map((r) => [r.repo_full_name, r]))
 console.log(`project ${projectId} (${(project.repos ?? []).length} repos attached)`)
 
+// Attach and configure every repository up front, one at a time. Doing this inside the
+// workers meant several of them POSTing to the same project at once, which the API
+// answered with a 500. Serialising it also means no run can start before its repo is
+// known to be trigger_mode 'off'.
+const needed = [...new Set(pending.map((t) => t.repo_full_name))]
+const repoIds = new Map()
+for (const [i, fullName] of needed.entries()) {
+  try {
+    repoIds.set(fullName, await ensureRepo(projectId, fullName, attached))
+  } catch (e) {
+    console.error(`  attach ${fullName} failed: ${e.message}`)
+  }
+  if ((i + 1) % 10 === 0 || i === needed.length - 1) console.log(`  attached ${i + 1}/${needed.length}`)
+}
+
 let spent = 0
 let stopped = false
 const queue = [...pending]
@@ -215,7 +244,8 @@ async function worker(id) {
     const t = queue.shift()
     const tag = `${t.cve}/${t.variant}`
     try {
-      const repoId = await ensureRepo(projectId, t.repo_full_name, attached)
+      const repoId = repoIds.get(t.repo_full_name)
+      if (!repoId) throw new Error(`repo ${t.repo_full_name} was never attached`)
       const started = await api('/v1/runs', {
         method: 'POST',
         body: JSON.stringify({ repo_id: repoId, pr_number: Number(t.prNumber) }),
