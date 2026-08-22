@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-08-20T17:49:47.036Z",
+ "generated_at": "2026-08-22T14:35:01.550Z",
  "as_published": [
   {
    "tool": "Ozone",
-   "TP": 0,
-   "FP": 0,
-   "TN": 0,
-   "FN": 0,
-   "precision": null,
-   "recall": null,
-   "f1": null,
-   "accuracy": null,
-   "n": 0
+   "TP": 63,
+   "FP": 23,
+   "TN": 60,
+   "FN": 19,
+   "precision": 0.7325581395348837,
+   "recall": 0.7682926829268293,
+   "f1": 0.75,
+   "accuracy": 0.7454545454545455,
+   "n": 165
   },
   {
    "tool": "claude-code",
@@ -125,15 +125,15 @@
  "corrected": [
   {
    "tool": "Ozone",
-   "TP": 0,
-   "FP": 0,
-   "TN": 0,
-   "FN": 0,
-   "precision": null,
-   "recall": null,
-   "f1": null,
-   "accuracy": null,
-   "n": 0
+   "TP": 63,
+   "FP": 17,
+   "TN": 59,
+   "FN": 19,
+   "precision": 0.7875,
+   "recall": 0.7682926829268293,
+   "f1": 0.7777777777777778,
+   "accuracy": 0.7721518987341772,
+   "n": 158
   },
   {
    "tool": "claude-code",
@@ -244,5 +244,5 @@
    "n": 158
   }
  ],
- "ozone_spend_usd": 0
+ "ozone_spend_usd": 525.2499999999998
 }
