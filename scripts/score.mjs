@@ -75,13 +75,6 @@ const render = (rows, title) => {
 render(table, 'As published (all rows) — comparable with deepsource.com/benchmarks')
 render(corrected, `Corrected (excludes fixed variants of ${identical.size} CVEs whose file is unchanged by the patch)`)
 
-const cost = ours.reduce((a, r) => a + (Number(r.cost_usd) || 0), 0)
-const withCost = ours.filter((r) => Number(r.cost_usd) > 0).length
-if (withCost) {
-  console.log(`\nOzone spend: $${cost.toFixed(2)} over ${withCost} runs ` +
-    `($${(cost / withCost).toFixed(2)}/run; $${(cost / Math.max(1, metrics(ours).TP)).toFixed(2)} per true positive)`)
-}
-
 await writeFile(join(ROOT, 'results/scores.json'),
-  JSON.stringify({ generated_at: new Date().toISOString(), as_published: table, corrected, ozone_spend_usd: cost }, null, 1))
+  JSON.stringify({ generated_at: new Date().toISOString(), as_published: table, corrected}, null, 1))
 console.log('\nwritten → results/scores.json')

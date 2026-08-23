@@ -175,7 +175,7 @@ Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recor
 | `manifest/identical-variants.json` | the 8 CVEs whose patch does not change the recorded file |
 | `manifest/fixtures.json` | built fixture repositories and their PR numbers |
 | `prompts/judge.md` | the judge prompt, verbatim |
-| `results/runs.jsonl` | every run: status, cost, duration, and each finding as Ozone reported it |
+| `results/runs.jsonl` | every run: status, duration, and each finding as Ozone reported it |
 | `results/judged.jsonl` | one verdict per run, with reasoning and the judge model |
 | `results/baselines-rejudged/` | every competitor row re-judged by our judge |
 | `results/judge-validation.json` | our judge vs DeepSource's, over all 1,489 rows |
