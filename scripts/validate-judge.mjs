@@ -13,12 +13,12 @@
 // matches and non-matches alike rather than on the ~75% of rows where nothing was found.
 //
 // Usage: node scripts/validate-judge.mjs [--model gpt-5.6-terra] [--effort high]
-//                                        [--sample 40] [--seed 20260820]
+//          [--out results/judge-validation.json] [--sample 40] [--seed 20260820]
 
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { judgeOnce, costOf, DEFAULT_MODEL, DEFAULT_EFFORT, systemPrompt } from './lib/judge-core.mjs'
+import { judgeOnce, costOf, assertCredentials, DEFAULT_MODEL, DEFAULT_EFFORT, systemPrompt } from './lib/judge-core.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = {}
@@ -33,6 +33,8 @@ const EFFORT = args.effort ?? DEFAULT_EFFORT
 const SAMPLE = Number(args.sample ?? 40)
 const SEED = Number(args.seed ?? 20260820)
 const CONCURRENCY = Number(args.concurrency ?? 4)
+try { assertCredentials(MODEL) } catch (e) { console.error(e.message); process.exit(2) }
+const outPath = join(ROOT, args.out ?? 'results/judge-validation.json')
 
 function rng(seed) {
   let s = seed >>> 0
@@ -131,10 +133,10 @@ if (disagreements.length) {
   }
 }
 
-await mkdir(join(ROOT, 'results'), { recursive: true })
-await writeFile(join(ROOT, 'results/judge-validation.json'), JSON.stringify({
+await mkdir(dirname(outPath), { recursive: true })
+await writeFile(outPath, JSON.stringify({
   judge_model: MODEL, reasoning_effort: EFFORT, seed: SEED, sample: n,
   agreement: n ? agree / n : null, kappa, matrix: { both_match: a, ours_only: b, theirs_only: c, both_no_match: d },
   spend_usd: spend, rows: results,
 }, null, 1))
-console.log('\nwritten → results/judge-validation.json')
+console.log(`\nwritten → ${outPath}`)

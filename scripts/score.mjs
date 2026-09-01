@@ -8,7 +8,8 @@
 //                   file is byte-identical before and after the patch, where a correct
 //                   detection is scored as a false positive through no fault of the tool
 //
-// Usage: node scripts/score.mjs [--baselines ../deepsource-benchmarks/benchmarks/judged-results]
+// Usage: node scripts/score.mjs [--judged results/judged.jsonl] [--out results/scores.json]
+//          [--baselines ../deepsource-benchmarks/benchmarks/judged-results]
 
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, dirname, basename } from 'node:path'
@@ -40,7 +41,7 @@ async function load(path) {
   return (await readFile(path, 'utf8')).split('\n').filter(Boolean).map((l) => JSON.parse(l))
 }
 
-const ours = await load(join(ROOT, 'results/judged.jsonl'))
+const ours = await load(join(ROOT, args.judged ?? 'results/judged.jsonl'))
 const baselineDir = args.baselines ?? join(ROOT, '../deepsource-benchmarks/benchmarks/judged-results')
 
 const table = []
@@ -75,6 +76,7 @@ const render = (rows, title) => {
 render(table, 'As published (all rows) — comparable with deepsource.com/benchmarks')
 render(corrected, `Corrected (excludes fixed variants of ${identical.size} CVEs whose file is unchanged by the patch)`)
 
-await writeFile(join(ROOT, 'results/scores.json'),
+const outPath = join(ROOT, args.out ?? 'results/scores.json')
+await writeFile(outPath,
   JSON.stringify({ generated_at: new Date().toISOString(), as_published: table, corrected}, null, 1))
-console.log('\nwritten → results/scores.json')
+console.log(`\nwritten → ${outPath}`)

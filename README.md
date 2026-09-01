@@ -52,10 +52,19 @@ the same file. The prompt is [`prompts/judge.md`](prompts/judge.md) and every ve
 written to `results/judged.jsonl` with its reasoning, so any judgment can be disputed
 against the record.
 
-The judge runs on **Azure OpenAI `gpt-5.6-terra` at `reasoning_effort: high`** — a
-different model family from the reviewer being scored, so no vendor marks its own
-homework. Effort is pinned rather than left to default, because a judge that varies its
-own depth between calls is not one verdict standard.
+The judge runs on **Azure OpenAI `gpt-5.6-terra` at `reasoning_effort: high`**. That is
+the same model family Ozone reviews with, and a reader is entitled to ask whether GPT is
+marking GPT. Two things bound that concern. The judge never sees code or a tool's name,
+only a CVE description and a list of reported findings, so the task is reading
+comprehension rather than security judgment. And it is checked row by row against a
+Claude judge we did not write (next section), where the disagreements fall evenly in
+both directions. It is still not a cross-family grading. The harness accepts a Claude
+judge for anyone who wants one: `--model claude-opus-5`, with `ANTHROPIC_API_KEY` set or
+a Claude deployment on the same Foundry resource, and `--out` so the result sits beside
+the published grading rather than replacing it.
+
+Effort is pinned rather than left to default, because a judge that varies its own depth
+between calls is not one verdict standard.
 
 The judge is **not told which version it is looking at**. An earlier revision of the
 prompt named the variant, and the effect was severe: told that a version was already
@@ -188,5 +197,8 @@ Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recor
 - The CVEs are public and predate current models, so memorisation cannot be excluded. It
   applies equally to every tool in the table, and it is the reason we treat post-cutoff
   evaluation as necessary rather than optional.
+- The judge is the same model family as Ozone's reviewer. It is blind to tool and
+  variant and agrees with DeepSource's Claude judge on 88.6% of rows, but a cross-family
+  grading would be stronger, and the harness supports one (see Judging).
 - Ozone is run at a pinned agent revision, recorded with each result set. Product changes
   move these numbers; we re-run rather than quote stale figures.

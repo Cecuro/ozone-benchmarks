@@ -13,12 +13,12 @@
 //   node scripts/score.mjs --baselines results/baselines-rejudged
 //
 // Usage: node scripts/rejudge-baselines.mjs [--model gpt-5.6-terra] [--effort high]
-//                                           [--concurrency 12] [--tool NAME]
+//          [--out results/baselines-rejudged] [--concurrency 12] [--tool NAME]
 
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { judgeOnce, costOf, DEFAULT_MODEL, DEFAULT_EFFORT, systemPrompt } from './lib/judge-core.mjs'
+import { judgeOnce, costOf, assertCredentials, DEFAULT_MODEL, DEFAULT_EFFORT, systemPrompt } from './lib/judge-core.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = {}
@@ -31,8 +31,9 @@ for (let i = 0; i < process.argv.length; i++) {
 const MODEL = args.model ?? DEFAULT_MODEL
 const EFFORT = args.effort ?? DEFAULT_EFFORT
 const CONCURRENCY = Number(args.concurrency ?? 12)
+try { assertCredentials(MODEL) } catch (e) { console.error(e.message); process.exit(2) }
 const srcDir = args.baselines ?? join(ROOT, '../deepsource-benchmarks/benchmarks/judged-results')
-const outDir = join(ROOT, 'results/baselines-rejudged')
+const outDir = join(ROOT, args.out ?? 'results/baselines-rejudged')
 await mkdir(outDir, { recursive: true })
 
 const system = await systemPrompt()
@@ -132,4 +133,4 @@ console.log(`\ndone. ${n} judged, ${failures} failed, $${spend.toFixed(2)} spent
 console.log(`judge agreement with DeepSource across ${total} rows: ${(100 * agree / total).toFixed(1)}%`)
 console.log(`  ours stricter (they matched, we did not): ${strictOnly}`)
 console.log(`  ours more lenient (we matched, they did not): ${lenientOnly}`)
-console.log(`\nscore with:  node scripts/score.mjs --baselines results/baselines-rejudged`)
+console.log(`\nscore with:  node scripts/score.mjs --baselines ${outDir}`)
