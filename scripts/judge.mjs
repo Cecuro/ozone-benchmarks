@@ -9,23 +9,23 @@
 // CVE descriptions come from OSV, matching the published run, and are cached so a
 // re-judge does not depend on the network.
 //
-// The judge runs on Azure OpenAI, a different model family from the reviewer being
-// scored, so no vendor is marking its own homework.
+// The judge defaults to gpt-5.6-terra, which reproduces the published grading. That
+// is the same model family Ozone reviews with; pass --model claude-opus-5 and --out to
+// produce a cross-family grading beside it without overwriting the published one.
 //
-// Usage: AZURE_OPENAI_API_KEY=… AZURE_OPENAI_ENDPOINT=… node scripts/judge.mjs
-//          [--model gpt-5.5] [--only CVE-ID,...] [--force]
+// Usage: node scripts/judge.mjs [--model gpt-5.6-terra] [--effort high]
+//          [--out results/judged.jsonl] [--only CVE-ID,...] [--force]
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { judgeOnce, systemPrompt, costOf, DEFAULT_MODEL, DEFAULT_EFFORT } from './lib/judge-core.mjs'
+import { judgeOnce, systemPrompt, costOf, assertCredentials, DEFAULT_MODEL, DEFAULT_EFFORT } from './lib/judge-core.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = parseArgs(process.argv.slice(2))
 const MODEL = args.model ?? DEFAULT_MODEL
 const EFFORT = args.effort ?? DEFAULT_EFFORT
-const KEY = process.env.AZURE_OPENAI_API_KEY
-if (!KEY || !process.env.AZURE_OPENAI_ENDPOINT) { console.error('AZURE_OPENAI_API_KEY / AZURE_OPENAI_ENDPOINT are not set'); process.exit(2) }
+try { assertCredentials(MODEL) } catch (e) { console.error(e.message); process.exit(2) }
 
 function parseArgs(argv) {
   const out = {}
@@ -89,12 +89,12 @@ if (args.only) {
   records = records.filter((r) => want.has(r.cve))
 }
 
-const outPath = join(ROOT, 'results/judged.jsonl')
+const outPath = join(ROOT, args.out ?? 'results/judged.jsonl')
 const existing = args.force ? [] : (await readFile(outPath, 'utf8').catch(() => ''))
   .split('\n').filter(Boolean).map((l) => JSON.parse(l))
 const judged = new Map(existing.map((j) => [`${j.cve_id}:${j.variant}`, j]))
 
-await mkdir(join(ROOT, 'results'), { recursive: true })
+await mkdir(dirname(outPath), { recursive: true })
 let n = 0
 for (const record of records) {
   const key = `${record.cve}:${record.variant}`
@@ -130,4 +130,4 @@ for (const record of records) {
     console.error(`${key} judge failed: ${e.message}`)
   }
 }
-console.log(`judged ${judged.size} rows → results/judged.jsonl`)
+console.log(`judged ${judged.size} rows → ${outPath}`)
