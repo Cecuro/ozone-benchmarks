@@ -65,6 +65,9 @@ benchmark review is posted to a pull request.
 The November 2026 runs executed Ozone's current review engine, with its production
 prompts, tools and model, on our own machines against the same fixture pull requests,
 rather than through the hosted app. `run-ozone.mjs` reproduces them through the hosted app.
+That setup did not keep knowledge between calls, so several November summaries report
+`ozone knowledge save` writes that were not stored. Knowledge is not used to judge a run,
+so this does not change any verdict.
 
 ### Judging
 
