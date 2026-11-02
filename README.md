@@ -21,6 +21,25 @@ We evaluate on the 85-CVE / 165-run subset that DeepSource used when it
 (filtered to CVEs with both commits, a CWE label, and an affected file under 1,000 lines),
 so the comparison is like for like.
 
+### Ozone's results
+
+| Run | Caught | False positives | Precision | Recall | F1 | F1, corrected |
+| --- | --- | --- | --- | --- | --- | --- |
+| **November 2026, current engine** (`results/`) | 78 of 82 | 24 of 82 | 76.47% | 95.12% | **84.78%** | 88.14% |
+| August 2026, previous engine (`results/2026-08/`) | 63 of 82 | 23 of 83 | 73.26% | 76.83% | 75.00% | 77.78% |
+
+Both runs use the same fixtures, the same judge and the same scoring script. "Corrected"
+is explained under [A defect in the dataset](#a-defect-in-the-dataset-and-how-we-report-around-it).
+
+One review in the November run, the `fixed` variant of CVE-2021-31712, hit the run's time
+limit and has no verdict, so that run scores 164 rows. Counted as a false positive, its F1
+would be 84.32%.
+
+False positives are the noisier of the two measures. A repeat of the November run with
+the same engine and model, through a different model host (`results/2026-11-repeat/`),
+completed 153 reviews: recall held at 94.81%, but false positives rose to 28 of 76 fixed
+files (37%, against 29%), for an F1 of 82.02%.
+
 ### How a run is constructed
 
 Following DeepSource's method, each CVE becomes its own repository:
@@ -43,6 +62,10 @@ Fixture repositories are attached with `trigger_mode: off` and
 `comment_mode: dashboard_only`, so only the runs this harness starts ever execute, and no
 benchmark review is posted to a pull request.
 
+The November 2026 runs executed Ozone's current review engine, with its production
+prompts, tools and model, on our own machines against the same fixture pull requests,
+rather than through the hosted app. `run-ozone.mjs` reproduces them through the hosted app.
+
 ### Judging
 
 Findings are judged by an LLM that is **not told which tool produced them**. A finding
@@ -52,9 +75,11 @@ the same file. The prompt is [`prompts/judge.md`](prompts/judge.md) and every ve
 written to `results/judged.jsonl` with its reasoning, so any judgment can be disputed
 against the record.
 
-The judge runs on **Azure OpenAI `gpt-5.6-terra` at `reasoning_effort: high`**. That is
-the same model family Ozone reviews with, and a reader is entitled to ask whether GPT is
-marking GPT. Two things bound that concern. The judge never sees code or a tool's name,
+The judge runs on **Azure OpenAI `gpt-5.6-terra` at `reasoning_effort: high`**. Until
+November 2026 that was the same model family Ozone reviewed with, so for the August results
+a reader is entitled to ask whether GPT is marking GPT. Ozone's current engine uses a
+different model family, so the November results do not carry that concern. For the August
+ones, two things bound it. The judge never sees code or a tool's name,
 only a CVE description and a list of reported findings, so the task is reading
 comprehension rather than security judgment. And it is checked row by row against a
 Claude judge we did not write (next section), where the disagreements fall evenly in
@@ -171,6 +196,9 @@ node scripts/rejudge-baselines.mjs
 
 # 5. Score
 node scripts/score.mjs --baselines results/baselines-rejudged
+
+# The previous engine's figures, from the same script
+node scripts/score.mjs --judged results/2026-08/judged.jsonl --baselines results/baselines-rejudged
 ```
 
 Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recorded.
@@ -184,11 +212,13 @@ Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recor
 | `manifest/identical-variants.json` | the 8 CVEs whose patch does not change the recorded file |
 | `manifest/fixtures.json` | built fixture repositories and their PR numbers |
 | `prompts/judge.md` | the judge prompt, verbatim |
-| `results/runs.jsonl` | every run: status, duration, and each finding as Ozone reported it |
-| `results/judged.jsonl` | one verdict per run, with reasoning and the judge model |
+| `results/runs.jsonl` | every run of the current engine (November 2026): status, duration, and each finding as Ozone reported it |
+| `results/judged.jsonl` | one verdict per completed run, with reasoning and the judge model |
 | `results/baselines-rejudged/` | every competitor row re-judged by our judge |
 | `results/judge-validation.json` | our judge vs DeepSource's, over all 1,489 rows |
-| `results/scores.json` | the computed tables |
+| `results/scores.json` | the computed tables for the current engine |
+| `results/2026-08/` | the previous engine's runs, verdicts and scores (August 2026) |
+| `results/2026-11-repeat/` | the repeat of the November run, through a different model host |
 
 ## Scope and limits
 
@@ -197,8 +227,11 @@ Both `run-ozone.mjs` and `judge.mjs` resume: re-running skips work already recor
 - The CVEs are public and predate current models, so memorisation cannot be excluded. It
   applies equally to every tool in the table, and it is the reason we treat post-cutoff
   evaluation as necessary rather than optional.
-- The judge is the same model family as Ozone's reviewer. It is blind to tool and
-  variant and agrees with DeepSource's Claude judge on 88.6% of rows, but a cross-family
-  grading would be stronger, and the harness supports one (see Judging).
+- The August results were judged by the same model family Ozone then reviewed with; the
+  November results were not. The judge is blind to tool and variant and agrees with
+  DeepSource's Claude judge on 88.6% of rows, and the harness supports a Claude judge for
+  a second grading (see Judging).
+- False positive counts move between repeat runs of the same engine (see Ozone's results).
+  Detection held steady across the two November runs.
 - Ozone is run at a pinned agent revision, recorded with each result set. Product changes
   move these numbers; we re-run rather than quote stale figures.
